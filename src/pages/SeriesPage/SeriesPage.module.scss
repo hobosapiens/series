@@ -1,0 +1,30 @@
+.series {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+    .list {
+        gap: 22px 44px;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .list {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .list {
+        gap: 24px;
+    }
+}

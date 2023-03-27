@@ -1,0 +1,29 @@
+.search {
+    display: flex;
+    flex-grow: 1;
+    max-width: 630px;
+    background: #FFFFFF;
+    padding: 6px;
+}
+
+.input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+}
+
+.button {
+    background-color: #00A496;
+    color: #FFFFFF;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 13px 28px 14px 34px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: opacity .5s ease;
+
+    &:hover {
+        opacity: .9;
+    }
+}

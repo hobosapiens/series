@@ -1,0 +1,103 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.info {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 60px;
+}
+
+.name {
+    font-size: 39px;
+}
+
+.rating {
+    margin: 5px 0 10px;
+}
+
+.genres {
+    margin-bottom: 20px;
+}
+
+.summary {
+    line-height: 1.2;
+}
+
+.cast {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+.actors {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.actor {
+    display: flex;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.actor_photo {
+    margin-right: 12px;
+
+    img {
+        width: 53px;
+    }
+}
+
+.character_name {
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 790px) {
+    .poster {
+        position: absolute;
+        right: 0;
+
+        img {
+            width: 160px;
+        }
+    }
+
+    .details {
+        padding-right: 190px;
+        min-height: 224px;
+    }
+
+    .name, .cast {
+        font-size: 32px;
+    }
+
+    .summary, .genres {
+        font-size: 13px;;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .poster {
+        img {
+            width: 108px;
+        }
+    }
+
+    .details {
+        padding-right: 130px;
+        min-height: 152px;
+    }
+
+    .actor_name {
+        font-size: 12px;
+    }
+
+    .character_name {
+        font-size: 10px;
+    }
+}

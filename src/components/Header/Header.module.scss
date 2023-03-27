@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.logo {
+    margin-right: 75px;
+}
+
+.search {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 610px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .search {
+        width: 100%;
+    }
+}

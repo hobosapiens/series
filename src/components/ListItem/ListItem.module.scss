@@ -1,0 +1,35 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    width: 217px;
+}
+
+.img {
+    width: 100%;
+}
+
+.name {
+    margin: 8px 0 2px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 790px) {
+    .item {
+        width: 174px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .item {
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .item {
+        width: 217px;
+        margin: 0 auto;
+    }
+}
