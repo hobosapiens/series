@@ -1,7 +1,7 @@
 {
   "name": "series",
   "private": true,
-  "homepage": "https://hobosapiens.github.io/series",
+  "homepage": "https://hobosapiens.github.io/series/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

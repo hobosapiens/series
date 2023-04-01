@@ -1,11 +1,13 @@
 import { API_SEARCH, API_SHOW_INFO, API_SHOW_CAST } from '@/constants/api.js';
-import { SET_SERIES, SET_SINGLE_SHOW } from '@/store/constants/actionTypes';
-import { setSeries, setSingleShow } from '@/store/actions';
+import { SET_SERIES, SET_SINGLE_SHOW, SET_LOADING, SET_ERROR } from '@/store/constants/actionTypes';
+import { setSeries, setSingleShow, setLoading, setError } from '@/store/actions';
 import { getAPIData } from '@/api/getAPIData';
 
 const initialState = {
     series: [],
-    singleShow: []
+    singleShow: [],
+    isLoading: false,
+    isError: false,
 };
 
 const seriesReducer = (state = initialState, action) => {
@@ -19,6 +21,16 @@ const seriesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 singleShow: action.payload
+            }
+        case SET_LOADING:
+            return {
+                ...state,
+                isLoading: action.payload
+            }
+        case SET_ERROR:
+            return {
+                ...state,
+                isError: action.payload
             }
         default:
             return state;
@@ -34,15 +46,18 @@ const mappedSeries = (series) => {
     }))
 }
 
-export const searchSeries = (query, state = initialState) => async (dispatch) => {
+export const searchSeries = (query) => async (dispatch) => {
+    dispatch(setLoading(true));
     const res = await getAPIData(API_SEARCH + query);
 
     if (!res) {
-        console.log('Error with searching!');
+        dispatch(setLoading(false));
+        dispatch(setError(true));
         return;
     }
 
     dispatch(setSeries(mappedSeries(res)));
+    dispatch(setLoading(false));
 }
 
 const mappedSingleShow = (show) => {
@@ -57,15 +72,18 @@ const mappedSingleShow = (show) => {
     })
 }
 
-export const getSingleShow = (id, state = initialState) => async (dispatch) => {
+export const getSingleShow = (id) => async (dispatch) => {
+    dispatch(setLoading(true));
     const res = await getAPIData(API_SHOW_INFO + id + API_SHOW_CAST);
 
     if (!res) {
-        console.log('Error to get single show!');
+        dispatch(setLoading(false));
+        dispatch(setError(true));
         return;
     }
 
     dispatch(setSingleShow(mappedSingleShow(res)));
+    dispatch(setLoading(false));
 }
 
 export default seriesReducer;

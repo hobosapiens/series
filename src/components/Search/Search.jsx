@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import cn from 'classnames';
 
 import styles from './Search.module.scss';
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const [inputInFocus, setInputInFocus] = useState(false);
     const navigateTo = useNavigate();
   
     const searchSeries = () => {
@@ -23,7 +25,10 @@ const Search = () => {
     }
 
     return (
-        <div className={styles.search}>
+        <div className={cn(
+            styles.search,
+            inputInFocus && styles.focused
+            )}>
             <input
                 className={styles.input}
                 type="text"
@@ -31,6 +36,8 @@ const Search = () => {
                 value={searchTerm}
                 onKeyDown={handleKeyDown}
                 onChange={handleChange}
+                onFocus={() => setInputInFocus(true)}
+                onBlur={() => setInputInFocus(false)}
             />
             <button 
                 className={styles.button} 

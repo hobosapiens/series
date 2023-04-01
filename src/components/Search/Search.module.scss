@@ -3,7 +3,12 @@
     flex-grow: 1;
     max-width: 630px;
     background: #FFFFFF;
-    padding: 6px;
+    padding: 3px;
+    border: 3px solid #FFFFFF;
+
+    &.focused {
+        border-color: #00A496;
+    }
 }
 
 .input {
@@ -21,9 +26,9 @@
     padding: 13px 28px 14px 34px;
     box-sizing: border-box;
     cursor: pointer;
-    transition: opacity .5s ease;
+    transition: opacity .2s ease;
 
     &:hover {
-        opacity: .9;
+        opacity: .8;
     }
 }

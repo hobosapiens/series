@@ -12,7 +12,7 @@ import styles from './SeriesPage.module.scss';
 const SeriesPage = () => {
   const dispatch = useDispatch();
   const { query } = useParams()
-  const seriesFromStore = useSelector(state => state.series);
+  const { series, isLoading, isError } = useSelector(state => state);
 
   useEffect(() => {
     dispatch(searchSeries(query));
@@ -21,23 +21,31 @@ const SeriesPage = () => {
   return (
     <div className={styles.series}>
       <Header />
-      {seriesFromStore?.length
-          ? (
-              <ul className={styles.list}>
-                  {seriesFromStore?.map(show => (
-                    <ListItem
-                      key={show.id} 
-                      id={show.id}
-                      name={show.name}
-                      rating={show.rating}
-                      image={show.image}
-                     />
-                  ))}
-              </ul>
-          )
-          : <Loader />
+      {isError
+        ? <h2>Error getting series data!</h2>
+        : isLoading
+          ? <Loader />
+          : !!series.length
+            ? <SeriesList series={series} />
+            : <h2>No results found for: «{ query }»</h2>
       }
     </div>
+  )
+}
+
+const SeriesList = ({ series }) => {
+  return (
+    <ul className={styles.list}>
+      {series?.map(show => (
+        <ListItem
+          key={show.id} 
+          id={show.id}
+          name={show.name}
+          rating={show.rating}
+          image={show.image}
+        />
+      ))}
+    </ul>
   )
 }
   

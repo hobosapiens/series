@@ -14,7 +14,7 @@ import styles from './AboutPage.module.scss';
 const AboutPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams()
-  const singleShow = useSelector(state => state.singleShow);
+  const { singleShow, isLoading, isError} = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getSingleShow(id));
@@ -24,9 +24,11 @@ const AboutPage = () => {
     <div className={styles.about}>
       <Header />
       <BackButton />
-      {singleShow
-          ? <ShowInfo singleShow={singleShow} />
-          : <Loader />
+      {isError
+        ? <h2>Error getting series data!</h2>
+        : isLoading
+          ? <Loader />
+          : <ShowInfo singleShow={singleShow} />
       }
     </div>
   )

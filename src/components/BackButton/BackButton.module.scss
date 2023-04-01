@@ -10,12 +10,18 @@
     border: none;
     outline: none;
     text-align: left;
-    padding: 16px 10px;
+    padding: 14px 8px;
+    border: 2px solid #161616;
     margin-bottom: 40px;
     cursor: pointer;
+    transition: opacity .2s ease;
 
     &:hover {
         opacity: .7;
+    }
+
+    &:focus {
+        border-color: #363636;
     }
 
     img {

@@ -9,7 +9,7 @@ import styles from './ListItem.module.scss';
 const ListItem = ({ image, name, rating, id }) => {
   return (
     <div className={styles.item}>
-      <Link to={`/about/${id}`} className={styles.link}>
+      <Link to={`/series/about/${id}`} className={styles.link}>
         <img className={styles.img} src={image ? image : noImage} alt={name} />
       </Link>
       <div className={styles.info}>
