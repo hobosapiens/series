@@ -13,14 +13,11 @@
 
 .name {
     font-size: 39px;
-}
-
-.rating {
-    margin: 5px 0 10px;
+    margin: 0 5px 0 0;
 }
 
 .genres {
-    margin-bottom: 20px;
+    margin: 10px 0 20px;
 }
 
 .summary {
@@ -36,6 +33,7 @@
 .actors {
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
 }
 
 .actor {
@@ -55,6 +53,11 @@
 .character_name {
     margin-top: 3px;
     font-size: 12px;
+}
+
+.error {
+    margin-top: 40px;
+    font-weight: 400;
 }
 
 @media screen and (max-width: 790px) {

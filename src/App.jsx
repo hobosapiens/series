@@ -7,7 +7,7 @@ import NotFound from "@/pages/NotFound"
 
 const App = () => {
   return (
-    <div className="container">
+    <section className="container">
       <BrowserRouter>
         <Routes>
           <Route path="/series/" element={<HomePage />} />
@@ -16,7 +16,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </section>
   )
 }
 

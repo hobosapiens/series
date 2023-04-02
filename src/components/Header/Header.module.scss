@@ -13,6 +13,12 @@
     flex-grow: 1;
 }
 
+@media screen and (max-width: 790px) {
+    .logo {
+        margin-right: 40px;
+    }
+}
+
 @media screen and (max-width: 610px) {
     .header {
         flex-direction: column;

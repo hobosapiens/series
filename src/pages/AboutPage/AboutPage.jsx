@@ -23,13 +23,15 @@ const AboutPage = () => {
   return (
     <div className={styles.about}>
       <Header />
-      <BackButton />
-      {isError
-        ? <h2>Error getting series data!</h2>
-        : isLoading
-          ? <Loader />
-          : <ShowInfo singleShow={singleShow} />
-      }
+      <main>
+        <BackButton />  
+        {isError
+          ? <h2 className={styles.error}>Error getting series data!</h2>
+          : isLoading
+            ? <Loader />
+            : <ShowInfo singleShow={singleShow} />
+        }
+      </main>
     </div>
   )
 }
@@ -54,28 +56,26 @@ const ShowInfo = ({ singleShow }) => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.details}>
-          <div className={styles.name}>{name}</div>
-          <div className={styles.rating}>
-            <Rating value={rating} />
-          </div>
+          <h2 className={styles.name}>{name}</h2>
+          <Rating value={rating} />
           {!!genres?.length && 
-            <div className={styles.genres}>
+            <h4 className={styles.genres}>
               <b>Genres: </b>
               {separatedGenres}
-            </div>
+            </h4>
           }
           {summary &&
-            <div className={styles.summary}>
+            <p className={styles.summary}>
               {summary && removeTags(summary)}
-            </div>
+            </p>
           }
         </div>
         {!!cast?.length &&
           <>
-            <div className={styles.cast}>Cast</div>
-            <div className={styles.actors}>
+            <h3 className={styles.cast}>Cast</h3>
+            <ul className={styles.actors}>
               {cast?.map((actor, index) => (
-                <div key={index} className={styles.actor}>
+                <li key={index} className={styles.actor}>
                   <div className={styles.actor_photo}>
                     <img 
                       src={actor.person.image ? actor.person.image?.medium : noImage} 
@@ -83,12 +83,12 @@ const ShowInfo = ({ singleShow }) => {
                     />
                   </div>
                   <div className={styles.actorInfo}>
-                    <div className={styles.actor_name}><b>{actor.person.name}</b></div>
-                    <div className={styles.character_name}>as {actor.character.name}</div>
+                    <h5 className={styles.actor_name}>{actor.person.name}</h5>
+                    <span className={styles.character_name}>as {actor.character.name}</span>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </>
         }
       </div>

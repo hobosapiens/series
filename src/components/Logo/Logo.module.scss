@@ -1,5 +1,10 @@
 .logo {
     width: 253px;
+    transition: opacity .2s ease;
+
+    &:hover {
+        opacity: .8;
+    }
 }
 
 .link {

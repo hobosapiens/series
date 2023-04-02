@@ -5,14 +5,14 @@ import styles from './Header.module.scss';
 
 const Header = () => {
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <div className={styles.logo}>
                 <Logo />
             </div>
             <div className={styles.search}>
                 <Search />
             </div>
-        </div>
+        </header>
     )
 }
 

@@ -21,14 +21,16 @@ const SeriesPage = () => {
   return (
     <div className={styles.series}>
       <Header />
-      {isError
-        ? <h2>Error getting series data!</h2>
-        : isLoading
-          ? <Loader />
-          : !!series.length
-            ? <SeriesList series={series} />
-            : <h2>No results found for: «{ query }»</h2>
-      }
+      <main>
+        {isError
+          ? <h2 className={styles.error}>Error getting series data!</h2>
+          : isLoading
+            ? <Loader />
+            : !!series.length
+              ? <SeriesList series={series} />
+              : <h2 className={styles.no_result}>No results found for: «{ query }»</h2>
+        }
+      </main>
     </div>
   )
 }

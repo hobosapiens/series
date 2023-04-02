@@ -6,9 +6,9 @@ const NotFound = () => {
     return (
         <div className={styles.not_found}>
             <Header />
-            <div className={styles.text}>
+            <h2 className={styles.text}>
                 Page Not Found
-            </div>
+            </h2>
         </div>
     )
 }

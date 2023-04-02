@@ -8,17 +8,13 @@ import styles from './ListItem.module.scss';
 
 const ListItem = ({ image, name, rating, id }) => {
   return (
-    <div className={styles.item}>
+    <li className={styles.item}>
       <Link to={`/series/about/${id}`} className={styles.link}>
         <img className={styles.img} src={image ? image : noImage} alt={name} />
       </Link>
-      <div className={styles.info}>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.rating}>
-          <Rating value={rating} />
-        </div>
-      </div>
-    </div>
+      <h5 className={styles.name}>{name}</h5>
+      <Rating value={rating} />
+    </li>
   )
 }
 
