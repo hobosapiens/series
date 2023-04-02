@@ -41,7 +41,7 @@ const mappedSeries = (series: IServerDataShowResult[]): IShow[] => {
     }))
 }
 
-export const searchSeries = (query: string) => async (dispatch: Dispatch<Action>) => {
+export const searchSeries = (query: any): any => async (dispatch: Dispatch<Action>) => {
     dispatch(setLoading(true));
     const res = await getAPIData(API_SEARCH + query);
 

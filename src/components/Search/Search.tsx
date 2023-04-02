@@ -9,14 +9,14 @@ const Search = () => {
     const [inputInFocus, setInputInFocus] = useState(false);
     const navigateTo = useNavigate();
   
-    const searchSeries = () => {
+    const search = () => {
       setSearchTerm('')
       navigateTo(`/series/${searchTerm}`);
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
         if (e.key === 'Enter') {
-            searchSeries()
+            search()
         }
     }
 
@@ -41,7 +41,7 @@ const Search = () => {
             />
             <button 
                 className={styles.button} 
-                onClick={searchSeries}
+                onClick={search}
                 disabled={searchTerm === ''}
             >
                 Search

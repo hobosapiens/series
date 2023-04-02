@@ -10,7 +10,7 @@ What I did:
 - The web application work on the latest version of the browsers Chrome, Firefox and Edge.
 - The web application have two views, one for detailed information and one for search and result.
 - The repository of the web application contain documentation on how to run the application.
-- The web application is written in ReactJS.
+- The web application is written in Typescript.
 - The web application is written without CSS libraries and frameworks.
 - The web application should have routing set up in such way that the end users can send direct links to detailed information about a certain TV show.
 
