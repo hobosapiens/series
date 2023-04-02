@@ -14,13 +14,13 @@ const Search = () => {
       navigateTo(`/series/${searchTerm}`);
     }
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
         if (e.key === 'Enter') {
             searchSeries()
         }
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setSearchTerm(e.target.value)
     }
 

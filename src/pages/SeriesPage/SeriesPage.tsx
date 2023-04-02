@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router";
 
@@ -8,11 +8,12 @@ import Header from '@/components/Header';
 import Loader from '@/components/Loader';
 
 import styles from './SeriesPage.module.scss';
+import { IShow, IState } from "@/types/types";
 
 const SeriesPage = () => {
   const dispatch = useDispatch();
   const { query } = useParams()
-  const { series, isLoading, isError } = useSelector(state => state);
+  const { series, isLoading, isError } = useSelector((state: IState) => state);
 
   useEffect(() => {
     dispatch(searchSeries(query));
@@ -35,17 +36,15 @@ const SeriesPage = () => {
   )
 }
 
-const SeriesList = ({ series }) => {
+interface SeriesListProps {
+  series: IShow[]
+}
+
+const SeriesList: FC<SeriesListProps> = ({ series }) => {
   return (
     <ul className={styles.list}>
       {series?.map(show => (
-        <ListItem
-          key={show.id} 
-          id={show.id}
-          name={show.name}
-          rating={show.rating}
-          image={show.image}
-        />
+        <ListItem show={show} key={show.id} />
       ))}
     </ul>
   )

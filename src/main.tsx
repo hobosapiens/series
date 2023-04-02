@@ -6,10 +6,10 @@ import store from '@/store/store';
 
 import '@/styles/index.scss';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <Provider store={store}>
       <App /> 
-    </React.StrictMode>
-  </Provider>
+    </Provider>
+  </React.StrictMode>
 )

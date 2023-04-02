@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FC, useEffect, Dispatch } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -8,13 +8,15 @@ import Rating from '@/components/Rating';
 import BackButton from "@/components/BackButton";
 import { getSingleShow } from '@/store/reducers'
 import noImage from '@/static/no-image.png'
+import { IShowDetailed, IState } from "@/types/types";
 
 import styles from './AboutPage.module.scss';
+import { Action } from "@reduxjs/toolkit";
 
 const AboutPage = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams()
-  const { singleShow, isLoading, isError} = useSelector(state => state);
+  const dispatch: Dispatch<Action> = useDispatch();
+  const { id } = useParams();
+  const { singleShow, isLoading, isError} = useSelector((state: IState) => state);
 
   useEffect(() => {
     dispatch(getSingleShow(id));
@@ -29,18 +31,22 @@ const AboutPage = () => {
           ? <h2 className={styles.error}>Error getting series data!</h2>
           : isLoading
             ? <Loader />
-            : <ShowInfo singleShow={singleShow} />
+            : singleShow && <ShowInfo singleShow={singleShow} />
         }
       </main>
     </div>
   )
 }
 
-const ShowInfo = ({ singleShow }) => {
+interface ShowInfoProps {
+  singleShow: IShowDetailed
+}
+
+const ShowInfo: FC<ShowInfoProps> = ({ singleShow }) => {
   const { image, name, rating, genres, summary, cast } = singleShow;
   const separatedGenres = genres?.join(" | ");
 
-  const removeTags = (text) => {
+  const removeTags = (text: string) => {
     if (text === null || text === "") {
       return false;
     } else {
@@ -78,13 +84,13 @@ const ShowInfo = ({ singleShow }) => {
                 <li key={index} className={styles.actor}>
                   <div className={styles.actor_photo}>
                     <img 
-                      src={actor.person.image ? actor.person.image?.medium : noImage} 
-                      alt={actor.person.name} 
+                      src={actor.photo ? actor.photo : noImage} 
+                      alt={actor.name} 
                     />
                   </div>
                   <div className={styles.actorInfo}>
-                    <h5 className={styles.actor_name}>{actor.person.name}</h5>
-                    <span className={styles.character_name}>as {actor.character.name}</span>
+                    <h5 className={styles.actor_name}>{actor.name}</h5>
+                    <span className={styles.character_name}>as {actor.character}</span>
                   </div>
                 </li>
               ))}

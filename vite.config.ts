@@ -7,8 +7,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/series/',
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   }
 })

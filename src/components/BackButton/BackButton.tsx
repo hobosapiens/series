@@ -6,9 +6,10 @@ import styles from './BackButton.module.scss';
 
 const BackButton = () => {
     const navigate = useNavigate();
-	const goBack = () => {
+	const goBack = (): void => {
 		navigate(-1);
 	}
+
     return (
         <button onClick={goBack} className={styles.button}>
             <img src={backArrow} alt="backArrow" />

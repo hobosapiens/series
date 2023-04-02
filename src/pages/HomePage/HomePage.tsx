@@ -1,5 +1,5 @@
 import Search from '@/components/Search';
-import Logo from '@/components/logo';
+import Logo from '@/components/Logo';
 
 import styles from './HomePage.module.scss';
 
@@ -11,7 +11,6 @@ const HomePage = () => {
         <Search />
       </div>
     </div>
-    
   )
 }
   
